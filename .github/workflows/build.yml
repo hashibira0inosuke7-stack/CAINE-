@@ -1,48 +1,23 @@
-name: Build EXE
-
-on: [push]
-
-jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Install Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-
-    - name: Install dependencies
-      run: pip install pyinstaller pillow pygetwindow keyboard
-
-    - name: Build exe
-      run: |
-        pyinstaller --onefile --noconsole ^
-        --add-data "caine_inicio.png;." ^
-        --add-data "caine_feliz1.png;." ^
-        --add-data "caine_feliz2.png;." ^
-        --add-data "caine_feliz3.png;." ^
-        --add-data "caine_enojado1.png;." ^
-        --add-data "caine_enojado2.png;." ^
-        --add-data "caine_enojado3.png;." ^
-        --add-data "caine_dibujo1.png;." ^
-        --add-data "caine_dibujo2.png;." ^
-        --add-data "caine_dibujo3.png;." ^
-        --add-data "caine_interesado1.png;." ^
-        --add-data "caine_interesado2.png;." ^
-        --add-data "caine_interesado3.png;." ^
-        --add-data "caine_entretenido1.png;." ^
-        --add-data "caine_aburrido1.png;." ^
-        --add-data "caine_aburrido2.png;." ^
-        --add-data "caine_aburrido3.png;." ^
-        --add-data "caine_dormido.png;." ^
-        --add-data "caine_asustado.png;." ^
-        main.py
-
-    - name: Upload exe
-      uses: actions/upload-artifact@v4
-      with:
-        name: caine-app
-        path: dist/main.exe
+- name: Build exe
+  run: >
+    pyinstaller --onefile --noconsole
+    --add-data "caine_inicio.png;."
+    --add-data "caine_feliz1.png;."
+    --add-data "caine_feliz2.png;."
+    --add-data "caine_feliz3.png;."
+    --add-data "caine_enojado1.png;."
+    --add-data "caine_enojado2.png;."
+    --add-data "caine_enojado3.png;."
+    --add-data "caine_dibujo1.png;."
+    --add-data "caine_dibujo2.png;."
+    --add-data "caine_dibujo3.png;."
+    --add-data "caine_interesado1.png;."
+    --add-data "caine_interesado2.png;."
+    --add-data "caine_interesado3.png;."
+    --add-data "caine_entretenido1.png;."
+    --add-data "caine_aburrido1.png;."
+    --add-data "caine_aburrido2.png;."
+    --add-data "caine_aburrido3.png;."
+    --add-data "caine_dormido.png;."
+    --add-data "caine_asustado.png;."
+    main.py
